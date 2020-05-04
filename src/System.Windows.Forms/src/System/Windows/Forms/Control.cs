@@ -10011,6 +10011,12 @@ namespace System.Windows.Forms
             // as follows: UiaReturnRawElementProvider(hwnd, 0, 0, NULL). This call tells
             // UI Automation that it can safely remove all map entries that refer to the specified window.
             UnsafeNativeMethods.UiaReturnRawElementProvider(new HandleRef(this, handle), new IntPtr(0), new IntPtr(0), null);
+
+            if (OsVersion.IsWindows8OrGreater && Properties.GetObject(s_accessibilityProperty) is object)
+            {
+                var intAccessibleObject = new InternalAccessibleObject(AccessibilityObject);
+                UnsafeNativeMethods.UiaDisconnectProvider(intAccessibleObject);
+            }
         }
 
         /// <summary>

@@ -4054,6 +4054,9 @@ namespace System.Windows.Forms
         [DllImport(ExternDll.UiaCore, CharSet = CharSet.Unicode)]
         internal static extern int UiaRaiseStructureChangedEvent(IRawElementProviderSimple provider, StructureChangeType structureChangeType, int[] runtimeId, int runtimeIdLen);
 
+        [DllImport(ExternDll.UiaCore, ExactSpelling = true)]
+        internal static extern int UiaDisconnectProvider(IRawElementProviderSimple provider);
+
         // UIAutomation interfaces and enums
         // obtained from UIAutomation source code
 
